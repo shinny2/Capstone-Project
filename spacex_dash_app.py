@@ -58,7 +58,6 @@ def get_pie_chart(entered_site):
 
 @app.callback(Output(component_id='success-payload-scatter-chart', component_property='figure'), Input(component_id='site-dropdown', component_property='value'), Input(component_id='payload-slider', component_property='value'))
 def get_scatter_chart(site_dropdown, payload_range):
-    payload_range = (min_payload, max_payload)
     filtered = spacex_df[(payload_range[0] < spacex_df['Payload Mass (kg)']) & (spacex_df['Payload Mass (kg)'] < payload_range[1])]
     if(site_dropdown=='ALL'):
         fig = px.scatter(filtered,x = 'Payload Mass (kg)', y = 'class',color = 'Booster Version Category')
